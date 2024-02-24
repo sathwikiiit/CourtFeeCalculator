@@ -1,0 +1,197 @@
+#:kivy 2.2.1
+    
+<Preview>
+    v1: Acre
+    v2: gts
+    valt:Value
+    pa:Evalu
+    l_price:Valuation
+    font_size: 24
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.15,0.15,0.3,1
+            Rectangle:
+                size: root.width,root.height
+                pos:0,0
+
+        TextInput:
+            id: Acre
+            text: '0'
+            font_size: root.font_size
+            size_hint:0.2,0.1
+            pos_hint: {'x':0.05,'y':0.65}
+        
+        TextInput:
+            id: gts
+            text: '0'
+            font_size: root.font_size
+            size_hint:0.2,0.1
+            pos_hint: {'x':0.3,'y':0.65}
+        
+        Button:
+            id: Add
+            text: '[color=fffed0]Add[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.2,0.1
+            pos_hint: {'x':0.6,'y':0.65}
+            on_release: root.add_sy()
+        Label:
+            id: Value
+            text: 'Ac. {} gts.'.format('0 - 0.00')
+            font_size: root.font_size
+            markup:True
+            halign:'center'
+            size_hint:0.6,0.1
+            pos_hint: {'x':0,'y':0.8}
+            canvas.before:
+                Color:
+                    rgba: 0.35,0.15,0.3,1
+                Rectangle:
+                    size: root.width,self.size[1]
+                    pos: self.pos
+        Button:
+            id: Switch
+            text: '[color=ffff00]Switch[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.5,0.1
+            pos_hint: {'x':0.5,'y':0.9}
+            on_release: root.parent.switch_screen()
+        
+        Button:
+            id: Reset
+            text: '[color=ffff00]Reset[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.5,0.1
+            pos_hint: {'x':0,'y':0.9}
+            on_release: root.reset()
+
+        TextInput:
+            id: Evalu
+            text: '0.0'
+            font_size: root.font_size
+            size_hint:0.6,0.1
+            pos_hint: {'x':0.05,'y':0.52}
+        
+        Button:
+            id: copy
+            text: '[color=fffe00]Copy[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.3,0.1
+            pos_hint: {'x':0.68,'y':0.4}
+            on_release: root.copyf()
+        Label:
+            id: Valuation
+            text: 'Rs. 0.0'
+            font_size: root.font_size
+            markup:True
+            halign:'center'
+            size_hint:0.6,0.1
+            pos_hint: {'x':0.05,'y':0.4}
+            canvas.before:
+                Color:
+                    rgba: 0.35,0.15,0.3,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: evalb
+            text: '[color=fffe00]Evaluate[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.3,0.1
+            pos_hint: {'x':0.68,'y':0.52}
+            on_release: root.evaluate()
+        
+        
+        
+<CalcGame>
+    suit_val: Suit_value_input
+    factor: factor_input
+    cfee: Value
+    font_size: 24
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.15,0.15,0.3,1
+            Rectangle:
+                size: root.width,root.height
+                pos:0,0
+        Button:
+            id: calculate
+            text: '[color=ffff00]Calculate[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.5,0.1
+            pos_hint: {'x':0.25,'y':0.62}
+            on_release: root.updateval()
+        TextInput:
+            id: Suit_value_input
+            text: '0'
+            font_size: root.font_size
+            size_hint:0.5,0.1
+            pos_hint: {'x':0.1,'y':0.75}
+        
+        Label:
+            id: Value
+            text: '[b][color=ffffff]Property Value :\n {} \n Court Fee :\n {}[/color][/b]'.format(str(root.suit_val_n),str(root.cFee_n))
+            font_size: root.font_size
+            markup:True
+            halign:'center'
+            size_hint:0.8,0.2
+            pos_hint: {'x':0.1,'y':0.4}
+            canvas.before:
+                Color:
+                    rgba: 0.35,0.15,0.3,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            
+
+        TextInput:
+            id: factor_input
+            text: '1'
+            font_size: root.font_size
+            size_hint:0.2,0.1
+            pos_hint: {'x':0.7,'y':0.75}
+        
+        Button:
+            id: Switch
+            text: '[color=ffff00]Switch[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.5,0.1
+            pos_hint: {'x':0.5,'y':0.9}
+            on_release: root.parent.switch_screen()
+
+        Button:
+            id: Reset
+            text: '[color=ffff00]Reset[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.5,0.1
+            pos_hint: {'x':0,'y':0.9}
+            on_release: root.reset()
+        
+        Button:
+            id: pastef
+            text: '[color=ffff00]^[/color]'
+            font_size: root.font_size
+            markup:True
+            background_color: (1.5,0.65,0,1)
+            size_hint:0.08,0.1
+            pos_hint: {'x':0.61,'y':0.75}
+            on_release: root.pastef()
+        
