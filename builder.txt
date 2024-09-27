@@ -1,0 +1,7 @@
+echo on
+
+cd C:\Data\Programming\python_pgms\Octarix\Court_Fee_Calculator
+
+kivyenv\Scripts\Activate.bat
+
+pyinstaller -F main.py
